@@ -1,0 +1,24 @@
+{
+  "name": "playwright-pom",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "codegen:copy": "node scripts/codegen-copy.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "playwright": "^1.59.1",
+    "playwright-core": "^1.59.1",
+    "undici-types": "^7.19.2"
+  },
+  "description": ""
+}
