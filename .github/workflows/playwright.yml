@@ -12,6 +12,10 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        shard: [1/2, 2/2]
+
     steps:
       - uses: actions/checkout@v4
 
@@ -26,13 +30,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test --trace on
+      - name: Run Playwright tests (sharded)
+        run: npx playwright test --shard=${{ matrix.shard }} --trace on
 
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.shard }}
           path: playwright-report/
           retention-days: 30
